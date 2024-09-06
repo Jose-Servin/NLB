@@ -24,6 +24,7 @@ env = base_path.cwd() / "dot.env"
 load_dotenv(env)
 
 SECRET_KEY = os.getenv("SECRET_KEY")
+DB_PASS = os.getenv("DB_PASS")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -89,8 +90,12 @@ WSGI_APPLICATION = "nlb_project.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "NATIONAL_LOAD_BOARD",
+        "HOST": "127.0.0.1",
+        "PORT": "3306",
+        "USER": "root",
+        "PASSWORD": f"{DB_PASS}",
     }
 }
 
